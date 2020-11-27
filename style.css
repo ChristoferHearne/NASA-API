@@ -8,3 +8,14 @@ body {
     color: #373fff;
   }
   
+  /* Navigation Bar*/
+
+  .logo{
+      width: auto;
+      height: 60px;
+      float: left;  
+  }
+
+  nav{
+      float: right;  
+  }
