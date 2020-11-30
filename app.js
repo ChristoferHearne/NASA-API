@@ -1,11 +1,19 @@
 // NASA API 
 let lat;
 let long; 
+var previousMarker;
+var img = document.querySelector("img");
+img.addEventListener("load", removeLoadingClass);
+function removeLoadingClass(){
+  satelliteButton.classList.toggle('.satellite_button'); 
+}
 
 let satelliteButton = document.querySelector(".satellite_button");
-satelliteButton.addEventListener("click", ()=>{
-    console.log("button pressed")
-    sendAPIRequest()
+satelliteButton.addEventListener("click", function (event){
+    event.preventDefault();
+    this.classList.toggle('is-loading');
+    clearIMG(); 
+    sendAPIRequest();
   })
 
 async function sendAPIRequest(){
@@ -13,6 +21,10 @@ async function sendAPIRequest(){
     let response = await fetch(`https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2019-10-11&&dim=0.5&api_key=${API_KEY}`);
     let data = await response.json();
     useAPIdata(data); 
+}
+
+function clearIMG(){
+  document.querySelector(".satellite_img").innerHTML = ""; 
 }
 
 // Get satellite Image from NASA API
@@ -29,17 +41,19 @@ function useAPIdata(data){
   });
   
   google.maps.event.addListener(map, 'click', function(event) {
+    if (previousMarker)
+        previousMarker.setMap(null);
     placeMarker(event.latLng);
  });
  
  function placeMarker(location) {
-     var marker = new google.maps.Marker({
+     previousMarker = new google.maps.Marker({
          position: location, 
          map: map,
      });
 
-     lat = marker.getPosition().lat();
-     long = marker.getPosition().lng();
+     lat = previousMarker.getPosition().lat();
+     long = previousMarker.getPosition().lng();
  } 
 
 }
