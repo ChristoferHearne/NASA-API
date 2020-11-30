@@ -1,21 +1,93 @@
+*{
+  font-family: 'Chakra Petch', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; 
+}
 body {
-    font-family: helvetica, arial, sans-serif;
-    margin: 2em;
-  }
+  background-image: linear-gradient(to bottom, #09203f 0%, #537895 100%);
+  min-height: 100vh; 
+}
   
-  h1 {
-    font-style: italic;
-    color: #373fff;
-  }
   
   /* Navigation Bar*/
 
-  .logo{
-      width: auto;
-      height: 60px;
-      float: left;  
-  }
+.logo{
+  width: auto;
+  height: 60px;
+  float: left; 
+}
 
-  nav{
-      float: right;  
-  }
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_links{
+  list-style: none;
+}
+
+.nav_links li{
+  display: inline-block;
+  margin: 20px 30px 20px; 
+}
+
+.nav_links li a{
+  transition: all 0.3s ease 0s; 
+}
+
+.nav_links li a:hover{
+  color: #0088a9; 
+}
+
+li, a{
+  color: #edf0f1; 
+  text-decoration: none;
+}
+
+.container{
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  width: 100%;
+  margin-bottom: 60px; 
+}
+
+.home_heading{
+  text-align: center;
+  color:#fff; 
+  font-weight: 300;  
+}
+
+.options{
+  margin-top: 40px; 
+}
+
+.buttons{
+  text-align: center; 
+  width: 100%;
+}
+
+.buttons button{
+  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  color: #1d1d1d;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 1.5rem;
+  border: 0;
+  transition: all 0.5s;
+  border-radius: 10px;
+  width: auto;
+  position: relative;
+  min-width: 250px;
+  opacity: 1;
+  color: white;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 10px; 
+}
+
+.buttons button:hover{
+  filter: brightness(1.2); 
+  
+}
+

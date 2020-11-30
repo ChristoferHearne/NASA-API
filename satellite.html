@@ -15,6 +15,12 @@
     <!-- import the webpage's javascript file -->
     <script src="app.js" defer></script>
   </head>
+  <style>
+      #map{
+          height: 400px; 
+          width: 100%;
+      }
+  </style>
   <header>
     <!-- Navigation Bar-->
     <div class="container">
@@ -31,15 +37,31 @@
     <!-- End of Navigation Bar-->
 </header>
 <body>
-<div class="home_heading">
-    <h1>Welcome to the NASA API project</h1>
-    <h2>What would you like to do?</h2>
-</div>
-<div class="options">
-    <div class="buttons">
-        <a href="satellite.html"><button>SatelliteMap</button></a>
-        <a href="asteroids.html"><button>Asteroids</button></a>
-        <a href="photo.html"><button>Photo of the day</button></a>
+    <input id="searchTerm" type="text" placeholder="Enter search term" />
+    <button id="search">
+        Search
+    </button>
+    <div id="map">
+        
     </div>
-</div> 
+    <script>
+        let map;
+    
+        function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 60.00418, lng: 15.79316 },
+        zoom: 8,
+        });
+
+        var marker = new google.maps.Marker({
+            position: {lat: 60.00418, lng: 15.79316 },
+            map:map
+        }); 
+        }
+
+    </script>
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7bJrPuUJsdXZutdVouq0GQmk10SFdVLk&callback=initMap"></script>
+    </script>
 </body>
+</html>
