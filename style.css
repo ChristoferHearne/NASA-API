@@ -91,3 +91,15 @@ li, a{
   
 }
 
+.search_bar{
+  text-align: center; 
+  margin-bottom: 50px; 
+}
+
+.map_info{
+  text-align: center;
+  margin-bottom: 30px;
+  color: #fff;
+  font-style: italic;
+}
+

@@ -17,7 +17,7 @@
   </head>
   <style>
       #map{
-          height: 400px; 
+          height: 600px; 
           width: 100%;
       }
   </style>
@@ -37,31 +37,27 @@
     <!-- End of Navigation Bar-->
 </header>
 <body>
-    <input id="searchTerm" type="text" placeholder="Enter search term" />
-    <button id="search">
-        Search
-    </button>
-    <div id="map">
-        
+    <div class="search_bar">
+        <input id="searchTerm" type="text" placeholder="Enter search term" />
+        <button id="search">
+            Search
+        </button>
     </div>
-    <script>
-        let map;
+    <div class="map_info">
+        <h2>Put a marker where you want your satellite image</h2>
+    </div>
+    <div id="map"></div>
+
+    <div class="options">
+        <div class="buttons">
+            <a><button class="satellite_button">Get Satellite Image</button></a>
+        </div>
+    </div>
     
-        function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 60.00418, lng: 15.79316 },
-        zoom: 8,
-        });
-
-        var marker = new google.maps.Marker({
-            position: {lat: 60.00418, lng: 15.79316 },
-            map:map
-        }); 
-        }
-
-    </script>
-    <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7bJrPuUJsdXZutdVouq0GQmk10SFdVLk&callback=initMap"></script>
-    </script>
+    <div class="satellite_img"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOBiTkTWXbQR1Qb459tzjkt0sbTXQ6YKE&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
 </body>
 </html>
