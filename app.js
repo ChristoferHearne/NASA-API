@@ -2,16 +2,12 @@
 let lat;
 let long; 
 var previousMarker;
-var img = document.querySelector("img");
-img.addEventListener("load", removeLoadingClass);
-function removeLoadingClass(){
-  satelliteButton.classList.toggle('.satellite_button'); 
-}
 
 let satelliteButton = document.querySelector(".satellite_button");
+
 satelliteButton.addEventListener("click", function (event){
     event.preventDefault();
-    this.classList.toggle('is-loading');
+    this.classList.add('is-loading');
     clearIMG(); 
     sendAPIRequest();
   })
@@ -24,13 +20,14 @@ async function sendAPIRequest(){
 }
 
 function clearIMG(){
-  document.querySelector(".satellite_img").innerHTML = ""; 
+  document.querySelector(".satellite_img").src = ""; 
 }
 
 // Get satellite Image from NASA API
 function useAPIdata(data){
-     document.querySelector(".satellite_img").innerHTML += `<img src="${data.url}">`; 
+     document.querySelector(".satellite_img").src = data.url;
 }
+
 // Google Maps
   let map;
   
@@ -56,6 +53,10 @@ function useAPIdata(data){
      long = previousMarker.getPosition().lng();
  } 
 
+}
+
+function removeLoadingClass(){
+  satelliteButton.classList.remove('is-loading'); 
 }
 
 
