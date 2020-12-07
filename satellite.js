@@ -19,8 +19,15 @@ satelliteButton.addEventListener("click", function (event){
 
 async function sendAPIRequest(){
     let response = await fetch(`https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2019-10-11&&dim=0.5&api_key=${API_KEY}`);
+    console.log(response);
     let data = await response.json();
-    useAPIdata(data); 
+    console.log(data); 
+    if (!response.ok){
+      alert(data.msg);
+  }
+  else{
+      useAPIdata(data); 
+  }
 }
 
 function clearIMG(){

@@ -25,15 +25,25 @@ photobutton.addEventListener("click", function(event){
 async function sendAPIRequest(){
     let response = await fetch(`${photoFeedURL}${API_KEY}`);
     let data = await response.json();
-    useAPIData(data);  
+    if (!response.ok){
+        alert(data.msg);
+    }
+    else{
+        useAPIData(data); 
+    }
 } 
 
 async function sendCustomAPIRequest(date){
     let response = await fetch(`${photoFeedURL}${API_KEY}&date=${date}`)
     let data = await response.json();
-    console.log(data); 
-    useAPIData(data); 
+    if (!response.ok){
+        alert(data.msg)
+    }
+    else{
+        useAPIData(data); 
+    }
 }
+
 
 function useAPIData(data){
     photoele.innerHTML = `
