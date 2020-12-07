@@ -37,6 +37,7 @@ async function sendCustomAPIRequest(date){
     let response = await fetch(`${photoFeedURL}${API_KEY}&date=${date}`)
     let data = await response.json();
     if (!response.ok){
+        removeLoadingClass();
         alert(data.msg)
     }
     else{
