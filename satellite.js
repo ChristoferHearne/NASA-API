@@ -21,6 +21,7 @@ async function sendAPIRequest(){
     let response = await fetch(`https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2019-10-11&&dim=0.5&api_key=${API_KEY}`);
     let data = await response.json();
     if (!response.ok){
+      removeLoadingClass(); 
       alert(data.msg);
   }
   else{
