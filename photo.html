@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
     <!-- import the webpage's javascript file -->
-    <script src="app.js" defer></script>
+    <script src="photo.js" defer></script>
   </head>
   <header>
     <!-- Navigation Bar-->
@@ -29,7 +29,17 @@
         </nav>
     </div>
    </header>
-<body>
+<body onload="sendAPIRequest()">
+  <div class="photo_heading">
+    <h1>Photo of the Day from NASA</h1>
+  </div>
 
+  <div id="photo_div">
+    <h2></h2>
+    <p></p>
+    <span></span>
+    <span></span>
+    <strong></strong>
+  </div>
 </body>
 </html>

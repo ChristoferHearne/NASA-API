@@ -154,3 +154,47 @@ li, a{
     transform: rotate(359deg); 
   }
 }
+.photo_heading{
+  text-align: center; 
+  color :#fff;
+  font-size: 30px;
+}
+
+#photo_div{
+  width: 100%;
+  display: block;
+  justify-content: space-between;
+  align-items: center; 
+  text-align: center; 
+  
+}
+
+#photo_div img{
+  height: 1000px; 
+  width: 1000px;
+  margin-top: 5vh; 
+}
+
+#photo_div h2{
+  color: white;
+  margin: 20px;
+  font-size: 3.5rem; 
+  font-weight: lighter; 
+}
+
+#photo_div p{
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem; 
+  font-weight: lighter; 
+  margin-right: 300px; 
+  margin-left: 300px;
+  margin-bottom: 40px; 
+}
+
+#photo_div strong{
+  font-size: 1.2rem;
+  color: white; 
+  font-weight: lighter; 
+  font-style: italic;
+}
