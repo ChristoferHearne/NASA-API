@@ -6,6 +6,10 @@ let API_KEY = "fdSFchz2wIqT1ZnJuhklfhIAyYRHCj3MKz88E5uR"
 
 let satelliteButton = document.querySelector(".satellite_button");
 
+window.onload = (event) => {
+  setTodaysDate(); 
+}
+
 satelliteButton.addEventListener("click", function (event){
     event.preventDefault();
     this.classList.add('is-loading');
