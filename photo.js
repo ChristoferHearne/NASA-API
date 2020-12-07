@@ -18,20 +18,18 @@ photobutton.addEventListener("click", function(event){
     event.preventDefault();
     this.classList.add('is-loading');
     clearPhotoDIV();
-    console.log(datepicker.value); 
     sendCustomAPIRequest(datepicker.value); 
 })
 
 //Functions
 async function sendAPIRequest(){
     let response = await fetch(`${photoFeedURL}${API_KEY}`);
-    console.log(response); 
     let data = await response.json();
     useAPIData(data);  
 } 
 
 async function sendCustomAPIRequest(date){
-    let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`)
+    let response = await fetch(`${photoFeedURL}${API_KEY}&date=${date}`)
     let data = await response.json();
     console.log(data); 
     useAPIData(data); 
@@ -59,13 +57,14 @@ function handleError(error){
 
 function setTodaysDate(){
     var today = new Date(); 
-    var date = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString().slice(0,10);
-    console.log(date); 
+    var date = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1).toISOString().slice(0,10);
     datepicker.value = date; 
 }
 
 function removeLoadingClass(){
     photobutton.classList.remove('is-loading'); 
-  }
+}
+
+
 
 
