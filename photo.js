@@ -50,9 +50,9 @@ async function sendCustomAPIRequest(date){
 
 function useAPIData(data){
     const youtubelink = "https://www.youtube.com/watch?v="+data.url.slice(30,41);
-
     if (data.media_type === "image")
     {
+        
         mainele.innerHTML = `
         <img onload="removeLoadingClass()" src=${data.url}>
         <h2>${data.title}</h2>
@@ -62,7 +62,7 @@ function useAPIData(data){
     }
     else if(data.media_type === "video"){
         mainele.innerHTML = `
-        <iframe src=${data.url} controls height="800" width="1280"></iframe>
+        <iframe src=${data.url} controls height="800" width="1280" onload="removeLoadingClass()"></iframe>
         <a href=${youtubelink} target="_blank">Watch on Youtube</a>
         <h2>${data.title}</h2>
         <p>${data.explanation}</p>
