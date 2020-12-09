@@ -1,6 +1,6 @@
 // Variables
 let API_KEY = "fdSFchz2wIqT1ZnJuhklfhIAyYRHCj3MKz88E5uR"
-let photoFeedURL = "https://api.nasa.gov/planetary/apod?api_key="
+let mediaFeedURL = "https://api.nasa.gov/planetary/apod?api_key="
 
 //Selectors
 const mainele = document.getElementById("photo_div");
@@ -23,7 +23,7 @@ photobutton.addEventListener("click", function(event){
 
 //Functions
 async function sendAPIRequest(){
-    let response = await fetch(`${photoFeedURL}${API_KEY}`);
+    let response = await fetch(`${mediaFeedURL}${API_KEY}`);
     let data = await response.json();
     if (!response.ok){
         alert(data.msg);
@@ -35,7 +35,7 @@ async function sendAPIRequest(){
 } 
 
 async function sendCustomAPIRequest(date){
-    let response = await fetch(`${photoFeedURL}${API_KEY}&date=${date}`)
+    let response = await fetch(`${mediaFeedURL}${API_KEY}&date=${date}`)
     let data = await response.json();
     if (!response.ok){
         removeLoadingClass();
@@ -49,8 +49,8 @@ async function sendCustomAPIRequest(date){
 
 
 function useAPIData(data){
-    const youtubelink = "https://www.youtube.com/watch?v=";
-    let videoid = data.url.slice(30, 41); 
+    const youtubelink = "https://www.youtube.com/watch?v="+data.url.slice(30,41);
+
     if (data.media_type === "image")
     {
         mainele.innerHTML = `
@@ -63,22 +63,16 @@ function useAPIData(data){
     else if(data.media_type === "video"){
         mainele.innerHTML = `
         <iframe src=${data.url} controls height="800" width="1280"></iframe>
-        <a href=${youtubelink}${videoid} target="_blank">Watch on Youtube</a>
+        <a href=${youtubelink} target="_blank">Watch on Youtube</a>
         <h2>${data.title}</h2>
         <p>${data.explanation}</p>
         <p>Date: ${data.date}</p>`
     }
-    console.log(videoid); 
     return mainele; 
 }
 
 function clearMainDIV(){
     mainele.innerHTML = ""; 
-}
-
-
-function handleError(error){
-    alert(error.message); 
 }
 
 function setTodaysDate(){
