@@ -62,7 +62,7 @@ function useAPIData(data){
     }
     else if(data.media_type === "video"){
         mainele.innerHTML = `
-        <iframe src=${data.url} controls height="800" width="1280" onload="removeLoadingClass()"></iframe>
+        <iframe src=${data.url}&autoplay=1 controls height="800" width="1280" onload="removeLoadingClass()" allow="autoplay" allowfullscreen="true"></iframe>
         <a href=${youtubelink} target="_blank">Watch on Youtube</a>
         <h2>${data.title}</h2>
         <p>${data.explanation}</p>
