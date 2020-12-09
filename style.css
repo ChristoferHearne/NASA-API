@@ -169,6 +169,23 @@ li, a{
   
 }
 
+#photo_div a{
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px; 
+  display: block; 
+  text-decoration: none; 
+  color:#fff; 
+  text-align: center;
+  padding-top: 20px;
+  cursor: pointer;  
+}
+
+
+#photo_div a:hover{
+  text-decoration: underline;
+}
+
 #photo_div img{
   height: 1000px; 
   width: 1000px;

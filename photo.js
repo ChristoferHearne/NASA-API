@@ -3,7 +3,7 @@ let API_KEY = "fdSFchz2wIqT1ZnJuhklfhIAyYRHCj3MKz88E5uR"
 let photoFeedURL = "https://api.nasa.gov/planetary/apod?api_key="
 
 //Selectors
-const photoele = document.getElementById("photo_div");
+const mainele = document.getElementById("photo_div");
 const photobutton = document.getElementById("photo_btn");
 const datepicker = document.getElementById("date_picker"); 
 
@@ -17,7 +17,7 @@ window.onload = (event) => {
 photobutton.addEventListener("click", function(event){
     event.preventDefault();
     this.classList.add('is-loading');
-    clearPhotoDIV();
+    clearMainDIV();
     sendCustomAPIRequest(datepicker.value); 
 })
 
@@ -29,7 +29,8 @@ async function sendAPIRequest(){
         alert(data.msg);
     }
     else{
-        useAPIData(data); 
+        useAPIData(data);
+        console.log(data); 
     }
 } 
 
@@ -42,23 +43,37 @@ async function sendCustomAPIRequest(date){
     }
     else{
         useAPIData(data); 
+        console.log(data); 
     }
 }
 
 
 function useAPIData(data){
-    photoele.innerHTML = `
-    <img onload="removeLoadingClass()" src=${data.hdurl}>
-    <h2>${data.title}</h2>
-    <p>${data.explanation}</p>
-    <p>Date: ${data.date}</p>
-    <strong>Copyright: ${data.copyright}</strong>`
-
-    return photoele; 
+    const youtubelink = "https://www.youtube.com/watch?v=";
+    let videoid = data.url.slice(30, 41); 
+    if (data.media_type === "image")
+    {
+        mainele.innerHTML = `
+        <img onload="removeLoadingClass()" src=${data.url}>
+        <h2>${data.title}</h2>
+        <p>${data.explanation}</p>
+        <p>Date: ${data.date}</p>
+        <strong>Copyright: ${data.copyright}</strong>`
+    }
+    else if(data.media_type === "video"){
+        mainele.innerHTML = `
+        <iframe src=${data.url} controls height="800" width="1280"></iframe>
+        <a href=${youtubelink}${videoid} target="_blank">Watch on Youtube</a>
+        <h2>${data.title}</h2>
+        <p>${data.explanation}</p>
+        <p>Date: ${data.date}</p>`
+    }
+    console.log(videoid); 
+    return mainele; 
 }
 
-function clearPhotoDIV(){
-    photoele.innerHTML = ""; 
+function clearMainDIV(){
+    mainele.innerHTML = ""; 
 }
 
 
