@@ -42,6 +42,7 @@ async function sendAPIRequest(){
     }
     else{
         useAPIData(data);
+        scrollToMedia();
         console.log(data); 
     }
 } 
@@ -57,7 +58,8 @@ async function sendCustomAPIRequest(date){
         alert(data.msg)
     }
     else{
-        useAPIData(data); 
+        useAPIData(data);
+        scrollToMedia();  
         console.log(data); 
     }
 }
@@ -78,7 +80,7 @@ function useAPIData(data){
         <strong>Copyright: ${data.copyright}</strong>`
     }
     // If photo of the day is a video
-    else if(data.media_type === "video"){
+    else{
         mainele.innerHTML = `
         <iframe src=${data.url}&autoplay=1 controls height="800" width="1280" onload="removeLoadingClass()" allow="autoplay" allowfullscreen="true"></iframe>
         <a href=${youtubelink} target="_blank">Watch on Youtube</a>
@@ -104,6 +106,10 @@ function setTodaysDate(){
 // Stop loading animation 
 function removeLoadingClass(){
     photobutton.classList.remove('is-loading'); 
+}
+
+function scrollToMedia(){
+    window.scrollTo(0, 250); 
 }
 
 
