@@ -53,10 +53,11 @@ async function sendCustomAPIRequest(date){
     let response = await fetch(`${mediaFeedURL}${API_KEY}&date=${date}`)
     // Get data 
     let data = await response.json();
+    let errormessage = data.msg; 
     // Error Handling
     if (!response.ok){
         removeLoadingClass();
-        alert(data.msg)
+        alert(errormessage); 
     }
     else{
         useAPIData(data);
