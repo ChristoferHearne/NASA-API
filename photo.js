@@ -36,9 +36,10 @@ async function sendAPIRequest(){
     let response = await fetch(`${mediaFeedURL}${API_KEY}`);
     //Get data
     let data = await response.json();
+    let errormessage = data.msg; 
     // Error Handling 
     if (!response.ok){
-        alert(data.msg);
+        alert(errormessage);
     }
     else{
         useAPIData(data);
