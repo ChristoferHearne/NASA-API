@@ -3,6 +3,7 @@ let lat;
 let long; 
 var previousMarker;
 let API_KEY = "fdSFchz2wIqT1ZnJuhklfhIAyYRHCj3MKz88E5uR" 
+let photoFeedURL = "https://api.nasa.gov/planetary/earth/assets?"
 
 // Selectors
 let satelliteButton = document.querySelector(".satellite_button");
@@ -26,7 +27,7 @@ satelliteButton.addEventListener("click", function (event){
 
 async function sendAPIRequest(){
     // Assign response
-    let response = await fetch(`https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2019-10-11&&dim=0.5&api_key=${API_KEY}`);
+    let response = await fetch(`${photoFeedURL}lon=${long}&lat=${lat}&date=2019-10-11&&dim=0.5&api_key=${API_KEY}`);
 
     // Get data
     let data = await response.json();
